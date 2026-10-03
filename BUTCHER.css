@@ -1,0 +1,301 @@
+:root {
+  --bg: #0a0500; /* لون أساسي داكن متناسق مع البرتقالي */
+  --primary-orange: #ff9900;
+  --primary-orange-glow: rgba(255, 153, 0, 0.45);
+  --secondary-cyan: #00aeef;
+  --secondary-cyan-glow: rgba(0, 174, 239, 0.3);
+  --text: #f0f6fc;
+  --muted: #b8c4d1; /* تفتيح بسيط للنصوص الباهتة لتناسب الخلفية */
+  --line: rgba(255, 153, 0, 0.2);
+  --ok: #00ff88;
+}
+
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  min-height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+}
+
+a{color:inherit;text-decoration:none}
+
+.EL-page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+  /* تدرج برتقالي أنيق يندمج مع الأسود للحفاظ على وضوح المحتوى */
+  background: linear-gradient(135deg, #4a2500 0%, #0a0500 100%);
+}
+
+.EL-top{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  border-bottom:1px solid rgba(255, 153, 0, 0.15);
+  background:transparent; /* جعل الهيدر شفافاً للاندماج مع التدرج */
+  position:relative;
+  z-index:10;
+}
+
+.EL-brand{display:flex;align-items:center;gap:12px}
+.EL-brand img{width:40px;height:40px;object-fit:contain;filter: drop-shadow(0 0 8px var(--primary-orange-glow));}
+.EL-brand strong{display:block;font-size:15px;letter-spacing:2px;color:var(--text);text-transform:uppercase}
+.EL-brand small{display:block;color:var(--primary-orange);font-size:8px;letter-spacing:1.8px;margin-top:2px;font-weight:600}
+
+.EL-ready{
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:1px;
+  color:var(--ok);
+  border:1px solid rgba(0, 255, 136, 0.3);
+  padding:6px 14px;
+  border-radius:999px;
+  background:rgba(0, 255, 136, 0.06);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.15);
+}
+
+.EL-main{
+  width:min(840px,calc(100% - 32px));
+  margin:auto;
+  padding:30px 0;
+  flex:1;
+  display:flex;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+
+/* إزالة المربع الخلفي (البطاقة) بالكامل لتصبح العناصر حرة */
+.EL-card{
+  width:100%;
+  background:transparent;
+  border:none;
+  box-shadow:none;
+  padding:10px 0;
+  position:relative;
+}
+
+/* إزالة الخط العلوي الملون الذي كان فوق المربع */
+.EL-card:after{
+  display:none;
+}
+
+.EL-hero{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:28px;
+  align-items:center;
+}
+
+.EL-logo{
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  filter: drop-shadow(0 0 25px var(--primary-orange-glow));
+}
+
+.EL-kicker{
+  font-size:9px;
+  font-weight:bold;
+  letter-spacing:3px;
+  color:var(--secondary-cyan);
+  margin-bottom:6px;
+  text-shadow: 0 0 8px var(--secondary-cyan-glow);
+}
+
+.EL-title{
+  font-size:42px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-0.5px;
+  margin:0 0 12px;
+  color:#fff;
+  text-shadow: 0 0 15px rgba(255, 153, 0, 0.35);
+}
+
+.EL-title span{
+  color:var(--primary-orange);
+}
+
+.EL-sub{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  max-width:580px;
+}
+
+.EL-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+/* جعل المربعات الداخلية حرة بخلفية شفافة وحدود خفيفة */
+.EL-box{
+  padding:12px;
+  border:1px solid rgba(255, 153, 0, 0.2);
+  border-radius:12px;
+  background:transparent;
+}
+
+.EL-box small{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+  letter-spacing:1.5px;
+  margin-bottom:4px;
+}
+
+.EL-box strong{
+  font-size:13px;
+  color:#fff;
+}
+
+.ok{color:var(--ok) !important}
+
+/* جعل شريط الحالة حر وبخلفية شفافة */
+.EL-status{
+  margin-top:16px;
+  padding:14px 18px;
+  border:1px solid rgba(255, 153, 0, 0.3);
+  border-radius:12px;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:60px;
+}
+
+.EL-status-main, #msg{
+  font-size:14px;
+  font-weight:800;
+  color:#fff;
+}
+
+.EL-status-note, .EL-runtime-note{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+
+.EL-loader{
+  width:110px;
+  height:5px;
+  border-radius:999px;
+  background:rgba(0,0,0,0.4);
+  overflow:hidden;
+  flex:0 0 auto;
+}
+
+.EL-loader i{
+  display:block;
+  width:40%;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg, var(--primary-orange), var(--secondary-cyan));
+  box-shadow: 0 0 10px var(--primary-orange);
+  animation:load 1.4s ease-in-out infinite;
+}
+
+#spin{
+  width:36px;
+  height:36px;
+  border:3px solid rgba(255, 255, 255, 0.1);
+  border-top-color:var(--primary-orange);
+  border-right-color:var(--secondary-cyan);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  flex:0 0 auto;
+  display:block;
+}
+
+.EL-phones{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+/* أزرار الهواتف مدمجة مع التدرج */
+.EL-phone{
+  flex:1 1 180px;
+  text-align:center;
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid rgba(255, 153, 0, 0.4);
+  background:rgba(255, 153, 0, 0.05);
+  color:var(--primary-orange);
+  font-size:16px;
+  font-weight:800;
+  letter-spacing:1px;
+  transition:all 0.2s ease;
+  box-shadow: 0 0 12px rgba(255, 153, 0, 0.1);
+}
+
+.EL-phone.blue, .EL-phone:nth-child(2){
+  border-color:rgba(0, 174, 239, 0.3);
+  background:rgba(0, 174, 239, 0.05);
+  color:var(--secondary-cyan);
+  box-shadow: 0 0 12px rgba(0, 174, 239, 0.1);
+}
+
+.EL-foot{
+  padding:14px 24px;
+  border-top:1px solid rgba(255, 153, 0, 0.15);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:1.5px;
+  position:relative;
+  z-index:1;
+  background:transparent;
+}
+
+#state,#out{display:none}
+body.done #spin{display:none} body.done #msg{color:var(--ok)}
+body.fail #spin{display:none} body.fail #msg{color:#ff4d6d}
+body.log .EL-hero{display:block}
+body.log .EL-logo{display:none}
+body.log #spin, body.log #msg{display:none}
+body.log #wrap{display:block}
+body.log #state{display:block;font-size:18px;font-weight:900;margin:0 0 10px;color:var(--primary-orange)}
+body.log #out{
+  display:block;
+  white-space:pre-wrap;
+  font:12px/1.5 Consolas,monospace;
+  background:rgba(0,0,0,0.3);
+  border:1px solid rgba(255,153,0,0.2);
+  border-radius:10px;
+  padding:14px;
+  height:calc(100vh - 200px);
+  overflow-y:auto;
+  color:#a0aec0;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes load{0%,100%{transform:translateX(-100%)}50%{transform:translateX(200%)}}
+
+@media(max-width:700px){
+  .EL-top{padding:0 16px}
+  .EL-main{width:min(92%,840px);padding:16px 0}
+  .EL-hero{grid-template-columns:1fr;text-align:center}
+  .EL-logo{width:120px;height:120px;margin:0 auto}
+  .EL-sub{margin:0 auto}
+  .EL-title{font-size:32px}
+  .EL-info{grid-template-columns:1fr}
+  .EL-foot{padding:12px 16px;flex-direction:column;text-align:center;gap:6px}
+  .EL-status{flex-direction:column;align-items:center;text-align:center}
+  .EL-loader{width:100%}
+}
